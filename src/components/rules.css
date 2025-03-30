@@ -1,0 +1,133 @@
+/* Rules Overlay Styles */
+.rules-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  padding: 1rem;
+}
+
+.rules-content {
+  background-color: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 30px rgba(0, 245, 212, 0.3);
+  border: 2px solid var(--accent-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.rules-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(0, 245, 212, 0.3);
+}
+
+.rules-header h2 {
+  margin: 0;
+  color: var(--accent-color);
+  font-size: 2rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  color: var(--highlight-color);
+  transform: rotate(90deg);
+}
+
+.rules-body {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.rules-body section {
+  margin-bottom: 2rem;
+}
+
+.rules-body h3 {
+  color: var(--highlight-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.rules-body p, .rules-body li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.rules-body ol, .rules-body ul {
+  padding-left: 1.5rem;
+}
+
+.rules-body li {
+  margin-bottom: 0.75rem;
+}
+
+.rules-body strong {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.rules-footer {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid rgba(0, 245, 212, 0.3);
+}
+
+.rules-footer .play-button {
+  background-color: var(--accent-color);
+  color: var(--secondary-bg);
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  box-shadow: 0 0 15px rgba(0, 245, 212, 0.5);
+}
+
+/* Responsive adjustments for rules */
+@media (max-width: 600px) {
+  .rules-content {
+    max-height: 85vh;
+  }
+  
+  .rules-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .rules-body {
+    padding: 1rem;
+  }
+  
+  .rules-body h3 {
+    font-size: 1.2rem;
+  }
+} 

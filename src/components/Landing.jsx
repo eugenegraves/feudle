@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import gsap from 'gsap'
 import FeatureCard from './FeatureCard'
 
-function Landing() {
+function Landing({ onPlay }) {
   const canvasRef = useRef(null)
   const wheelRef = useRef(null)
   
@@ -159,6 +159,12 @@ function Landing() {
     })
   }, [])
 
+  const handlePlayClick = () => {
+    if (onPlay) {
+      onPlay()
+    }
+  }
+
   return (
     <div className="landing-container">
       <div className="wheel-container">
@@ -175,7 +181,7 @@ function Landing() {
           <FeatureCard title="Beat the Buzzer" icon="clock" description="Test your speed and wit" />
         </div>
         
-        <button className="play-button">Play Now</button>
+        <button className="play-button" onClick={handlePlayClick}>Play Now</button>
       </div>
     </div>
   )

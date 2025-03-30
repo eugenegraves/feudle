@@ -1,7 +1,49 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-function Header() {
-  const [activeNav, setActiveNav] = useState('home')
+function Header({ gameState = 'home', onNavigate }) {
+  const [activeNav, setActiveNav] = useState(gameState)
+  
+  // Update active navigation when gameState changes
+  useEffect(() => {
+    setActiveNav(gameState)
+  }, [gameState])
+  
+  const handleNavClick = (navState) => {
+    // Only allow navigation to accessible states
+    if (canNavigateTo(navState)) {
+      setActiveNav(navState)
+      
+      if (onNavigate) {
+        onNavigate(navState)
+      }
+    }
+  }
+  
+  // Define which states are navigable based on current game state
+  const canNavigateTo = (targetState) => {
+    // Home is always accessible
+    if (targetState === 'home') return true
+    
+    // Play is accessible only from home
+    if (targetState === 'play' && gameState === 'home') return true
+    
+    // Results is accessible only after playing
+    if (targetState === 'results' && gameState === 'results') return true
+    
+    // Leaderboard is always accessible
+    if (targetState === 'leaderboard') return true
+    
+    return false
+  }
+  
+  // Visual indication for disabled states
+  const getNavItemClass = (navState) => {
+    let classes = activeNav === navState ? 'active' : ''
+    if (!canNavigateTo(navState) && navState !== activeNav) {
+      classes += ' disabled'
+    }
+    return classes
+  }
 
   return (
     <div className="sticky-header">
@@ -12,14 +54,49 @@ function Header() {
           </div>
           <nav className="main-nav">
             <ul>
-              <li className={activeNav === 'home' ? 'active' : ''}>
-                <a href="#" onClick={() => setActiveNav('home')}>Home</a>
+              <li className={getNavItemClass('home')}>
+                <a 
+                  href="#" 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleNavClick('home')
+                  }}
+                >
+                  Home
+                </a>
               </li>
-              <li className={activeNav === 'play' ? 'active' : ''}>
-                <a href="#" onClick={() => setActiveNav('play')}>Play</a>
+              <li className={getNavItemClass('play')}>
+                <a 
+                  href="#" 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleNavClick('play')
+                  }}
+                >
+                  Play
+                </a>
               </li>
-              <li className={activeNav === 'results' ? 'active' : ''}>
-                <a href="#" onClick={() => setActiveNav('results')}>Results</a>
+              <li className={getNavItemClass('results')}>
+                <a 
+                  href="#" 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleNavClick('results')
+                  }}
+                >
+                  Results
+                </a>
+              </li>
+              <li className={getNavItemClass('leaderboard')}>
+                <a 
+                  href="#" 
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleNavClick('leaderboard')
+                  }}
+                >
+                  Leaderboard
+                </a>
               </li>
             </ul>
           </nav>
