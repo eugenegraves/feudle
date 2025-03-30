@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-bg: #2b1e66;
+  --primary-color: #ffffff;
+  --accent-color: #00f5d4;
+  --highlight-color: #ffd700;
+  --secondary-bg: #1a1242;
+  --border-radius: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--primary-color);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+header {
+  background-color: var(--secondary-bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+main {
+  padding: 3rem 0;
+  min-height: calc(100vh - 160px);
+}
+
+footer {
+  background-color: var(--secondary-bg);
+  padding: 1rem 0;
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--highlight-color);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--highlight-color);
+  text-shadow: 0 0 8px rgba(0, 245, 212, 0.7);
+}
+
+button {
+  background-color: var(--accent-color);
+  color: var(--secondary-bg);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--highlight-color);
+  box-shadow: 0 0 15px rgba(0, 245, 212, 0.5);
+  transform: translateY(-2px);
+}
