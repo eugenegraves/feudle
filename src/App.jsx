@@ -1,5 +1,6 @@
 import './App.css'
 import Header from './components/Header'
+import Landing from './components/Landing'
 
 function App() {
   return (
@@ -8,10 +9,7 @@ function App() {
         <Header />
       </header>
       <main>
-        <div className="container">
-          <h1>Welcome to Feudle</h1>
-          <p>A game show themed word puzzle game</p>
-        </div>
+        <Landing />
       </main>
       <footer>
         <div className="container">
